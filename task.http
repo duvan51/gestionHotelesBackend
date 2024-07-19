@@ -1,0 +1,92 @@
+@apiAlojamientos = http://localhost:8080/alojamientos
+@apiTypeHabitacions = http://localhost:8080/typeOfhabitacion
+
+@apiTypeAlojamiento= http://localhost:8080/typeOfAlojamiento
+
+@apiUser= http://localhost:8080/users
+
+
+@loginUser= http://localhost:8080/login
+
+
+
+GET {{apiAlojamientos}}
+###
+
+POST {{apiAlojamientos}}
+Content-Type: application/json
+
+{
+    "id": 2,
+    "title": "motel jarbusales",
+    "description": "en este motel podriamos daslkda;sl",
+    "imagePrincipal": "",
+    "images": "",
+    "ubicacion": "manzana 12 # 12-24",
+    "pais": "colombia",
+    "departamento": "cundinamarca",
+    "ciudad": "bogota",
+    "numberPhone": "3132012218",
+    "whattsap": "3122123324",
+    "habitaciones_type_id_fk": 1,
+    "alojamientos_type_id_fk": 2
+}
+
+###
+GET {{apiTypeHabitacions}}
+
+
+
+###
+POST {{apiTypeHabitacions}}
+Content-Type: application/json
+
+{
+    
+    "numberHabitacions": 2,
+    "nameOfHabitacion": "vip cama doble",
+    "numbersCama": 1,
+    "price": "120000.00"
+}
+
+###
+GET {{apiTypeAlojamiento}}
+
+###
+POST {{apiTypeAlojamiento}}
+Content-Type: application/json
+
+{
+    
+    "title": "hotel campestre"
+}
+
+
+
+###
+POST {{apiUser}}
+Content-Type: application/json
+
+{
+    
+    "Name": "jeison",
+    "lastName": "campo campor",
+    "dateBirth": "23-10-1996",
+    "identificacion": "0123200000",
+    "email":"kevin@gmail.com"
+   
+    
+}
+
+
+
+
+
+#####
+POST {{apiUser}}
+Content-Type: application/json
+{
+    
+    "email": "kevin@gmail.com",
+    "password" : "123"
+}

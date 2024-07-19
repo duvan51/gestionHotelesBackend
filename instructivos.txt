@@ -1,0 +1,60 @@
+______________________________________
+->name image of docker = tiendaJK
+->pasword of mysql  = duvan1234789149
+
+->name of databases  = gestionHotels
+______________________________________
+
+crear y levantar imagen
+docker run -d -p 33060:3306 --name tiendaJK -e MYSQL_ROOT_PASSWORD=duvan1234789149 mysql
+
+mostarr los contenedores
+docker ps -a
+
+conectarme desde la terminal
+docker exec -it tiendaJK mysql -p
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INSERT INTO typeOfHabitacion (nameOfHabitacion, numberHabitacions, numbersCama, price, alojamientoId) VALUES ('Habitacion 1', 13, 2, 2500, 5);
+
+
+reservas 
+(id,
+
+)
+
+
+
+
+//aqui es para referencias User con reserva
+
+ALTER TABLE reserva
+ADD CONSTRAINT fk_reserva_usuario
+FOREIGN KEY (user_id_fk) REFERENCES User(id);
+
+
+
+CREATE TABLE reservaAlojamiento (
+    id_reserva INT,
+    id_habitacion INT,
+    PRIMARY KEY (id_reserva, id_habitacion),
+    FOREIGN KEY (id_reserva) REFERENCES reserva(id),
+    FOREIGN KEY (id_habitacion) REFERENCES  typeOfAlojamiento(id)
+);
+
+
+INSERT INTO typeOfHabitacion (nameOfHabitacion, numberHabitacions, numbersCama, price, alojamientoId) VALUES ('Habitacion 1', 13, 2, 2500, 5);
