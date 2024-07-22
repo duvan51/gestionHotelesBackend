@@ -29,7 +29,11 @@ const startServer = async () => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
-    playground: true,  // Habilita el playground de Apollo
+    playground: {
+        settings: {
+          'editor.theme': 'dark',  // Puedes personalizar los ajustes aquí
+        },
+      },  // Habilita el playground de Apollo
     context: ({ req }) => {
       // const token = req.headers.authorization || '';
       // return {token}
