@@ -7,7 +7,8 @@
     "build": "babel src -d dist",
     "dev": "nodemon src --exec babel-node",
     "publicVercel": "npm run build && npx vercel --prod",
-    "start": "babel-node src/index.js"
+    "start": "node dist/index.js", 
+  "postinstall": "npm run build" 
   },
   "keywords": [],
   "author": "",
