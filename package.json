@@ -6,7 +6,8 @@
   "scripts": {
     "build": "babel src -d dist",
     "dev": "nodemon src --exec babel-node",
-    "publicVercel": "npm run build && npx vercel --prod"
+    "publicVercel": "npm run build && npx vercel --prod",
+    "start": "babel-node src/index.js"
   },
   "keywords": [],
   "author": "",
