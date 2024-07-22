@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "packageManager": "pnpm@7.5.1",
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFile": []
+      }
+    }
+  ],
+  "routes": [
+    {"src": "/(.*)", "dest": "/index.js"}
+  ]
+
+
+
+}

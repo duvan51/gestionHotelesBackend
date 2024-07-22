@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src -d dist",
-    "dev": "nodemon src --exec babel-node"
+    "dev": "nodemon src --exec babel-node",
+    "publicVercel": "npm run build && npx vercel --prod"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +32,7 @@
     "@babel/core": "^7.24.6",
     "@babel/node": "^7.24.6",
     "@babel/preset-env": "^7.24.6",
-    "nodemon": "^3.1.2"
+    "nodemon": "^3.1.2",
+    "vercel": "^35.1.0"
   }
 }
