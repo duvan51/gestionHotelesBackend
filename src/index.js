@@ -25,9 +25,11 @@ const startServer = async () => {
   };
 
   app.use(autMidleware);
+  
   const server = new ApolloServer({
     typeDefs,
     resolvers,
+    playground: true,  // Habilita el playground de Apollo
     context: ({ req }) => {
       // const token = req.headers.authorization || '';
       // return {token}
