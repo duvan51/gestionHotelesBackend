@@ -1,0 +1,58 @@
+POST https://gestion-hoteles-backend-a9eb313dd396.herokuapp.com/graphql
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetUsers {
+  getUsers {
+    email
+    Reservas {
+      id
+      status
+      paymentTotal
+      payment
+      alojamientoId
+      birthCheckout
+      birthCheking
+      daysAlojamientos
+      userId
+      ReservaAlojamientos {
+        id
+      }
+    }
+  }
+}
+#################
+
+POST https://gestion-hoteles-backend-a9eb313dd396.herokuapp.com/graphql
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetReservasById($getReservasByIdId: ID!) {
+  getReservasById(id: $getReservasByIdId) {
+    alojamientoId
+    id
+    ReservaAlojamientos {
+      id
+    }
+  }
+}
+{
+  "getReservasByIdId": "13"
+}
+
+##############
+
+POST https://gestion-hoteles-backend-a9eb313dd396.herokuapp.com/graphql
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetUserById($getUserByIdId: ID!) {
+  getUserById(id: $getUserByIdId) {
+    Name
+    id
+    email
+  }
+}
+{
+  "getUserByIdId": "1"
+}

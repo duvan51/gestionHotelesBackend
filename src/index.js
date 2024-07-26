@@ -4,8 +4,10 @@ import typeDefs from "./schema/index.js";
 import resolvers from "./resolvers/index.js";
 import db from "./models/index.js";
 import jwt from "jsonwebtoken";
-import uploadsA from "./config/multerconfig.js";
-import path from "path";
+
+import multer from 'multer';
+import { storage } from './config/cloudinary.js';
+
 
 const startServer = async () => {
   const app = express();
@@ -41,25 +43,34 @@ const startServer = async () => {
       return { user, db };
     },
   });
-  //endpoint para la subida de imagene
 
-  app.post("/upload", uploadsA.single("imagePrincipal"), (req, res) => {
+
+
+
+  //endpoint para la subida de imagenes
+
+  const upload = multer({ storage });
+
+  app.post("/upload", upload.single("imagePrincipal"), (req, res) => {
     console.log(req.file);
     if (!req.file) {
       return res.status(400).send("No file uploaded.");
     }
-    res.send({ imageUrl: `/${req.file.filename}` });
+    res.send({ imageUrl: req.file.path });
+
+    console.log({ imageUrl: req.file.path })
   });
-  app.get("/uploads/:filename", (req, res) => {
-    const filename = req.params.filename;
-    const imagePaths = path.resolve(__dirname, "../uploads", filename);
-    //const imagePath = path.join(__dirname, 'uploads', filename);
-    res.sendFile(imagePaths);
-  });
+  
+
+
+
   // Ruta raíz opcional para verificar el estado del servidor
   app.get("/", (req, res) => {
     res.send("¡Servidor funcionando!");
   });
+
+
+
 
   await server.start();
   server.applyMiddleware({ app });

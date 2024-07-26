@@ -10,6 +10,7 @@ import ReservaAlojamientoModel from './reservaAlojamiento.js'
 
 
 
+
 // Define y sincroniza los modelos con la base de datos
 const syncModels = async () => {
     try {
@@ -24,6 +25,7 @@ const syncModels = async () => {
   // Llama a la función de sincronización al inicio de la aplicación
   syncModels();
   
+
 
 
 const User = UserModel(sequelize, Sequelize.DataTypes);

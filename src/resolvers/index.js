@@ -177,6 +177,7 @@ const resolvers = {
             throw error; // Maneja el error si ocurre
           }
         },
+
         getReservas: async () => {
           try {
 
@@ -184,6 +185,26 @@ const resolvers = {
             //console.log("estos son los usuarios =>", users)
             console.log( reservas )
             return reservas; // Devuelve la lista de usuarios
+          
+          } catch (error) {
+            console.error('Error al obtener tipo de habitacion', error);
+            throw error; // Maneja el error si ocurre
+          }
+        },
+        getReservasById: async (parent, { id }, { db }) => {
+          console.log(db.Reservas)
+     
+          try {
+            const reservaId = await db.Reservas.findByPk(id ,{
+              include: {
+                model: db.ReservaAlojamiento,
+                as: 'ReservaAlojamientos',
+              }
+            }); 
+            if(!reservaId){
+              throw new Error("alojamiento no encontrado")
+            }
+            return reservaId; // Devuelve la lista de usuarios
           
           } catch (error) {
             console.error('Error al obtener tipo de habitacion', error);

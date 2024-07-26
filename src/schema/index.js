@@ -70,14 +70,20 @@ const typeDefs = gql`
     typeOfHabitacion: [TypeOfHabitacion]
   }
 
+
   type Query {
+    getReservas: [Reserva]
+    getReservasById(id: ID!): Reserva
+
     getUserById(id: ID!): User
     getUsers: [User]
     getUser: User
+
     getAlojamientoById(id: ID!): Alojamientos
     getAlojamientos: [Alojamientos]
-    getReservas: [Reserva]
+    
     getTypeOfHabitacion: [TypeOfHabitacion]
+    
     getReservaAlojamiento: [ReservaAlojamiento]
   }
 

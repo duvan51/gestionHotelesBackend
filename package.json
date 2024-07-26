@@ -7,8 +7,8 @@
     "build": "babel src -d dist",
     "dev": "nodemon src --exec babel-node",
     "publicVercel": "npm run build && npx vercel --prod",
-    "start": "node dist/index.js", 
-  "postinstall": "npm run build" 
+    "start": "node dist/index.js",
+    "postinstall": "npm run build"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,7 @@
     "@apollo/client": "^3.10.5",
     "apollo-server-express": "^3.13.0",
     "argon2": "^0.40.3",
+    "cloudinary": "^1.41.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
@@ -26,6 +27,7 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
+    "multer-storage-cloudinary": "^4.0.0",
     "mysql2": "^3.10.0",
     "sequelize": "^6.37.3"
   },
