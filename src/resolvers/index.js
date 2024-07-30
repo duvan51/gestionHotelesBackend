@@ -181,9 +181,15 @@ const resolvers = {
         getReservas: async () => {
           try {
 
-            const reservas = await db.Reservas.findAll(); //.TypeOfHabitacion.findAll(); // Consulta todos los usuarios en la base de datos
-            //console.log("estos son los usuarios =>", users)
-            console.log( reservas )
+            const reservas = await db.Reservas.findAll({
+              include:{
+                model: db.ReservaAlojamiento,
+                as: 'ReservaAlojamientos',
+              }
+            });
+            if(!reservas){
+              throw new Error("Reservas no encontradas")
+            }
             return reservas; // Devuelve la lista de usuarios
           
           } catch (error) {
@@ -213,6 +219,8 @@ const resolvers = {
         },
        
     },
+
+
 
 
 
