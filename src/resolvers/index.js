@@ -148,10 +148,23 @@ const resolvers = {
         getAlojamientoById: async (_, {id}) =>{
           try{
             const alojamiento = await db.Alojamientos.findByPk(id, {
-              include: {
+              include: [{
                 model: db.TypeOfHabitacion,
                 as: 'typeOfHabitacion'
+              },
+              {
+                model: db.Reservas,
+                as: 'Reservas',
+                include: {
+                  model: db.ReservaAlojamiento,
+                  as: 'ReservaAlojamientos',
+                  include: {
+                    model: db.TypeOfHabitacion,
+                    as: 'typeOfHabitacion',
+                  }
+                }
               }
+            ]
             });
             if(!alojamiento){
               throw new Error("alojamientos no encontrados")
