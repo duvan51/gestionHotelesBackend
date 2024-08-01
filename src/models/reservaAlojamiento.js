@@ -50,7 +50,7 @@ const ReservaAlojamientoModel = (sequelize, DataTypes) => {
         tableName: 'reservaAlojamiento', // Especifica el nombre de la tabla existente
     }
 );
-    ReservaAlojamiento.sync({ force: true });
+   // ReservaAlojamiento.sync({ force: true });
 
     return ReservaAlojamiento;
 
