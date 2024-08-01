@@ -154,7 +154,7 @@ const resolvers = {
               },
               {
                 model: db.Reservas,
-                as: 'Reservas',
+                as: 'reservas',
                 include: {
                   model: db.ReservaAlojamiento,
                   as: 'ReservaAlojamientos',
@@ -228,6 +228,45 @@ const resolvers = {
           } catch (error) {
             console.error('Error al obtener tipo de habitacion', error);
             throw error; // Maneja el error si ocurre
+          }
+        },
+        getReservaAlojamiento: async () => {
+          try {
+
+            const ReservaAlojamiento = await db.ReservaAlojamiento.findAll({
+              include: {
+                model: db.TypeOfHabitacion,
+                as: 'typeOfHabitacion',
+              }
+            });
+            if(!ReservaAlojamiento){
+              throw new Error("No encontrados")
+            }
+            return ReservaAlojamiento; // Devuelve la lista de usuarios
+          
+          } catch (error) {
+            console.error('Error al obtener Reserva Alojamiento', error);
+            throw error; // Maneja el error si ocurre
+          }
+        },
+
+        getReservaAlojamientoById: async(_, {id}) =>{
+          try {
+            const ReservaAlojamiento = await db.ReservaAlojamiento.findByPk(id, {
+              include: {
+                model: db.TypeOfHabitacion,
+                as: 'typeOfHabitacion',
+              }
+            });
+            if(!ReservaAlojamiento){
+              throw new Error("usuario no encontrado")
+            }
+            return ReservaAlojamiento;
+          } catch (error) {
+            console.log("error al obterner el usuario ", error)
+            throw new Error("error al obtener los datos")
+
+            
           }
         },
        
@@ -397,7 +436,7 @@ const resolvers = {
           throw new ApolloError('Error al crear la reserva');
         }
       },
-      createReservaAlojamiento: async (_, { reservaId, price, daysReserva, id_habitacion,alojamientoId }, { db }) => {
+      createReservaAlojamiento: async (_, { reservaId, price, daysReserva, id_habitacion,alojamientoId,birthCheking, birthCheckout}, { db }) => {
         try {
           // Crear la reserva principal
           const reservaAlojamiento = await db.ReservaAlojamiento.create(
@@ -406,7 +445,9 @@ const resolvers = {
               price,
               daysReserva,
               id_habitacion,
-              alojamientoId
+              alojamientoId,
+              birthCheking,
+              birthCheckout
             },
           );
           return reservaAlojamiento; 

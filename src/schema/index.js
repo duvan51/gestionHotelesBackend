@@ -14,6 +14,7 @@ const typeDefs = gql`
     Alojamientos: [Alojamientos]
     Reservas: [Reserva]
   }
+    
 
   type Alojamientos {
     id: ID!
@@ -61,6 +62,8 @@ const typeDefs = gql`
 
   type ReservaAlojamiento {
     id: ID!
+    birthCheking: String!
+    birthCheckout: String!
     reservaId: Int!
     id_habitacion: Int!
     price: String!
@@ -85,12 +88,14 @@ const typeDefs = gql`
     getTypeOfHabitacion: [TypeOfHabitacion]
     
     getReservaAlojamiento: [ReservaAlojamiento]
+    getReservaAlojamientoById(id: ID!): ReservaAlojamiento
   }
 
   type AuthPayload {
     token: String!
     user: User!
   }
+    
   input ReservaAlojamientoInput {
     daysReserva: Int!
     id_habitacion: Int!
@@ -156,6 +161,9 @@ const typeDefs = gql`
       price: String!
       daysReserva: Int!
       alojamientoId: String!
+      birthCheking: String!
+      birthCheckout: String!
+
     ): ReservaAlojamiento
   }
 `;

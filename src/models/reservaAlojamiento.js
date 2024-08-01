@@ -31,6 +31,14 @@ const ReservaAlojamientoModel = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false
         },
+        birthCheking: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+          birthCheckout: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         alojamientoId:{
             type: DataTypes.STRING,
             allowNull: false

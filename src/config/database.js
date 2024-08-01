@@ -1,22 +1,32 @@
 import { Sequelize } from 'sequelize';
 import 'dotenv/config'
 
-/*
 
-const DB_USERNAME = process.env.DB_USERNAME;
-const DB_PASSWORD = process.env.DB_PASSWORD;
-const DB_HOST = process.env.DB_HOST;
-const DB_PORT = process.env.DB_PORT;
-const DB_NAME = process.env.DB_NAME;
+// const DB_USERNAME = process.env.DB_USERNAME;
+// const DB_PASSWORD = process.env.DB_PASSWORD;
+// const DB_HOST = process.env.DB_HOST;
+// const DB_PORT = process.env.DB_PORT;
+// const DB_NAME = process.env.DB_NAME;
 
-*/
+
+
+
+
 const DB_USERNAME = "wrk34ej9wmxp1260"
 const DB_PASSWORD = "w4gq2u9p5jwpsga8"
 const DB_HOST = "blonze2d5mrbmcgf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
 const DB_PORT = "3306"
 const DB_NAME = "reb1qzvrgkogm15p"
+/*
 
 
+
+const DB_USERNAME='root'
+const DB_PASSWORD='duvan1234789149'
+const DB_HOST='localhost'
+const DB_PORT="33060"
+const DB_NAME='gestionHotels'
+*/
 
 const sequelize = new Sequelize(
     DB_NAME,

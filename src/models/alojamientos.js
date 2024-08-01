@@ -57,6 +57,7 @@ const AlojamientosModel = (sequelize, DataTypes) => {
             allowNull: false
 
        },
+       
             
         userId: {
             type: DataTypes.INTEGER,
