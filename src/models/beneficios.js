@@ -30,7 +30,7 @@ const BeneficiosModel = (sequelize, DataTypes) => {
     }
 );
     //Beneficios.sync({ alter: true });
-    Beneficios.sync({ force: true });
+  //  Beneficios.sync({ force: true });
 
     return Beneficios;
 

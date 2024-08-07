@@ -15,8 +15,8 @@ import BeneficiosModel from './beneficios.js';
 // Define y sincroniza los modelos con la base de datos
 const syncModels = async () => {
     try {
-    //  await sequelize.sync( );
-      await sequelize.sync({force: true} );  //=> esto es para  prdoduccion
+     await sequelize.sync( );
+    //  await sequelize.sync({force: true} );  //=> esto es para  prdoduccion
       console.log('Base de datos sincronizada correctamente');
     } catch (error) {
       console.error('Error al sincronizar la base de datos:', error);
@@ -25,7 +25,6 @@ const syncModels = async () => {
   
   // Llama a la función de sincronización al inicio de la aplicación
   syncModels();
-  
 
 
 
