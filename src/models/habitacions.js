@@ -31,6 +31,7 @@ const typeOfHabitacionModel = (sequelize, DataTypes) => {
         }
 
     },
+    
     {
         timestamps: false,
         tableName: 'typeOfHabitacion', // Especifica el nombre de la tabla existente

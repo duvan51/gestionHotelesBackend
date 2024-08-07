@@ -6,7 +6,8 @@ import UserModel from './user.js';
 import AlojamientosModel from './alojamientos.js';
 import TypeOfHabitacionModel from './habitacions.js'
 import ReservasModel from './reservas.js';
-import ReservaAlojamientoModel from './reservaAlojamiento.js'
+import ReservaAlojamientoModel from './reservaAlojamiento.js';
+import BeneficiosModel from './beneficios.js';
 
 
 
@@ -33,6 +34,14 @@ const Alojamientos = AlojamientosModel(sequelize, Sequelize.DataTypes);
 const TypeOfHabitacion = TypeOfHabitacionModel(sequelize, Sequelize.DataTypes);
 const Reservas = ReservasModel(sequelize, Sequelize.DataTypes);
 const ReservaAlojamiento = ReservaAlojamientoModel(sequelize, Sequelize.DataTypes);
+const Beneficios = BeneficiosModel(sequelize, Sequelize.DataTypes);
+
+
+
+
+
+TypeOfHabitacion.belongsToMany(Beneficios, { through: 'HabitacionBeneficios', as: 'beneficios' });
+Beneficios.belongsToMany(TypeOfHabitacion, { through: 'HabitacionBeneficios', as: 'typeOfHabitacion' });
 
 
 User.hasMany(Alojamientos, { foreignKey: 'userId', as: 'Alojamientos' });
@@ -60,7 +69,8 @@ const db = {
     Alojamientos,
     TypeOfHabitacion,
     Reservas,
-    ReservaAlojamiento
+    ReservaAlojamiento,
+    Beneficios
 };
 
 export default db;

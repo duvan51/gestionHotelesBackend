@@ -269,7 +269,20 @@ const resolvers = {
             
           }
         },
-       
+
+        getBeneficio: async(_, { id })=> {
+          try {
+            const Beneficios = await db.Beneficios.findByPk(id)
+            if(!Beneficios){
+              throw new Error("beneficio no encontrado")
+            }
+            return Beneficios;
+          } catch (error) {
+            console.log("error al obterner el Beneficio ", error)
+            throw new Error("error al obtener los datos")
+            
+          }
+        }
     },
 
 
@@ -373,7 +386,9 @@ const resolvers = {
         nameOfHabitacion,
         numbersCama,
         price,
-        alojamientoId }) => {
+        alojamientoId,
+        beneficiosId,
+       }) => {
         try {     
           const roomAlojamientos = await db.TypeOfHabitacion.create({
        numberHabitacions,
@@ -383,12 +398,47 @@ const resolvers = {
         alojamientoId
           });
           console.log(roomAlojamientos)
+
+          await roomAlojamientos.addBeneficios(beneficiosId)
+
           return roomAlojamientos;
         } catch (error) {
           console.log('error al crear usuario: ', error)
           throw error;
         }
       },
+
+
+      createBeneficio : async(_, {
+        description,
+        iconoPrincipal,
+        imagePrincipal,
+        title
+
+      }) =>{
+        try {
+          const createBeneficio = await db.Beneficios.create({
+            description,
+            iconoPrincipal,
+            imagePrincipal,
+            title
+          })
+
+          return createBeneficio;
+          
+        } catch (error) {
+          console.log('error al crear usuario: ', error)
+          throw error;
+        }
+      },
+
+
+
+
+
+
+
+      
       
       deleteTypeOfHabitacion: async (_, {id}, {db}) =>{
         try {

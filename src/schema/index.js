@@ -14,7 +14,6 @@ const typeDefs = gql`
     Alojamientos: [Alojamientos]
     Reservas: [Reserva]
   }
-    
 
   type Alojamientos {
     id: ID!
@@ -44,6 +43,7 @@ const typeDefs = gql`
     alojamientoId: String!
     reservaAlojamientoId: String!
     ReservaAlojamiento: ReservaAlojamiento
+    beneficios: [Beneficios]
   }
 
 
@@ -73,6 +73,20 @@ const typeDefs = gql`
     typeOfHabitacion: [TypeOfHabitacion]
   }
 
+  type Beneficios {
+    id: ID!
+    title: String!
+    description: String!
+    imagePrincipal: String!
+    iconoPrincipal: String!
+
+  }
+  
+
+
+
+
+
 
   type Query {
     getReservas: [Reserva]
@@ -89,7 +103,12 @@ const typeDefs = gql`
     
     getReservaAlojamiento: [ReservaAlojamiento]
     getReservaAlojamientoById(id: ID!): ReservaAlojamiento
+
+
+    getBeneficio(id: ID!): Beneficios
   }
+
+
 
   type AuthPayload {
     token: String!
@@ -143,6 +162,13 @@ const typeDefs = gql`
       price: String!
       alojamientoId: String!
     ): TypeOfHabitacion
+
+    createBeneficio(
+      description: String!
+      title:String!
+      imagePrincipal:String!
+      iconoPrincipal:String!
+    ): Beneficios
 
     createReserva(
       payment: Int!
