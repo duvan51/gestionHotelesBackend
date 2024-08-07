@@ -29,7 +29,8 @@ const BeneficiosModel = (sequelize, DataTypes) => {
         tableName: 'beneficios', // Especifica el nombre de la tabla existente
     }
 );
-Beneficios.sync({ alter: true });
+    //Beneficios.sync({ alter: true });
+    Beneficios.sync({ force: true });
 
     return Beneficios;
 
