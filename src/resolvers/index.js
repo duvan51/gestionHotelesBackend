@@ -180,7 +180,14 @@ const resolvers = {
         getTypeOfHabitacion: async () => {
           try {
 
-            const typeOfHabitacion = await db.TypeOfHabitacion.findAll(); // Consulta todos los usuarios en la base de datos
+            const typeOfHabitacion = await db.TypeOfHabitacion.findAll({
+              include: [
+                {
+                  model: db.Beneficios,
+                  as:"beneficios"
+                }
+              ]
+            }); // Consulta todos los usuarios en la base de datos
             //console.log("estos son los usuarios =>", users)
            // console.log(db)
             return typeOfHabitacion; // Devuelve la lista de usuarios
@@ -405,13 +412,20 @@ const resolvers = {
         nameOfHabitacion,
         numbersCama,
         price,
-        alojamientoId
+        alojamientoId,
+        beneficiosId
           });
           console.log(roomAlojamientos)
 
-          await roomAlojamientos.addBeneficios(beneficiosId)
+          // Si `beneficiosId` es un array, usa `addBeneficios` para asociar múltiples beneficios
+    if (Array.isArray(beneficiosId)) {
+      await roomAlojamientos.addBeneficios(beneficiosId);
+    } else {
+      // Si `beneficiosId` es un único ID, usa `addBeneficio` para asociar un solo beneficio
+      await roomAlojamientos.addBeneficio(beneficiosId);
+    }
 
-          return roomAlojamientos;
+    return roomAlojamientos;
         } catch (error) {
           console.log('error al crear usuario: ', error)
           throw error;

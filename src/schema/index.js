@@ -155,6 +155,7 @@ const typeDefs = gql`
       numbersCama: Int!
       price: String!
       alojamientoId: String!
+      beneficiosId : [Int!]
     ): TypeOfHabitacion
 
     createBeneficio(
