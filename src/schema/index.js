@@ -79,15 +79,9 @@ const typeDefs = gql`
     description: String!
     imagePrincipal: String!
     iconoPrincipal: String!
-
+    
   }
   
-
-
-
-
-
-
   type Query {
     getReservas: [Reserva]
     getReservasById(id: ID!): Reserva
@@ -104,7 +98,7 @@ const typeDefs = gql`
     getReservaAlojamiento: [ReservaAlojamiento]
     getReservaAlojamientoById(id: ID!): ReservaAlojamiento
 
-
+    getBeneficios: [Beneficios]
     getBeneficio(id: ID!): Beneficios
   }
 

@@ -272,10 +272,20 @@ const resolvers = {
 
         getBeneficio: async(_, { id })=> {
           try {
-            const Beneficios = await db.Beneficios.findByPk(id)
-            if(!Beneficios){
+            const Beneficio = await db.Beneficios.findByPk(id)
+            if(!Beneficio){
               throw new Error("beneficio no encontrado")
             }
+            return Beneficio;
+          } catch (error) {
+            console.log("error al obterner el Beneficio ", error)
+            throw new Error("error al obtener los datos")
+            
+          }
+        },
+        getBeneficios: async()=> {
+          try {
+            const Beneficios = await db.Beneficios.findAll();
             return Beneficios;
           } catch (error) {
             console.log("error al obterner el Beneficio ", error)
