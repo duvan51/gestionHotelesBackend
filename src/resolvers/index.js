@@ -99,6 +99,12 @@ const resolvers = {
                     include: {
                       model: db.TypeOfHabitacion,
                       as: 'typeOfHabitacion',
+                      include: [
+                        {
+                          model: db.Beneficios,
+                          as:"beneficios"
+                        }
+                      ]
                     }
                   }
                 },
