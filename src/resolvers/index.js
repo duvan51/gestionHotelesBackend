@@ -70,7 +70,13 @@ const resolvers = {
                   as: 'Alojamientos',
                   include: {
                     model: db.TypeOfHabitacion,
-                    as: 'typeOfHabitacion'
+                    as: 'typeOfHabitacion',
+                    include: [
+                      {
+                        model: db.Beneficios,
+                        as:"beneficios"
+                      }
+                    ]
                       }
                 },
 
