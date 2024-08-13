@@ -163,7 +163,13 @@ const resolvers = {
             const alojamiento = await db.Alojamientos.findByPk(id, {
               include: [{
                 model: db.TypeOfHabitacion,
-                as: 'typeOfHabitacion'
+                as: 'typeOfHabitacion',
+                include: [
+                  {
+                    model: db.Beneficios,
+                    as:"beneficios"
+                  }
+                ]
               },
               {
                 model: db.Reservas,
