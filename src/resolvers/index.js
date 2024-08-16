@@ -145,7 +145,13 @@ const resolvers = {
             const alojamientos = await db.Alojamientos.findAll({
               include: {
                 model: db.TypeOfHabitacion,
-                as: 'typeOfHabitacion'
+                as: 'typeOfHabitacion',
+                include: [
+                  {
+                    model: db.Beneficios,
+                    as:"beneficios"
+                  }
+                ]
               }
             });
             if(!alojamientos){
