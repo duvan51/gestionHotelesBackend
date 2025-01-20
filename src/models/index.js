@@ -1,7 +1,6 @@
 import Sequelize, { ForeignKeyConstraintError } from 'sequelize';
 import sequelize from "../config/database";
 
-
 import UserModel from './user.js';
 import AlojamientosModel from './alojamientos.js';
 import TypeOfHabitacionModel from './habitacions.js'
