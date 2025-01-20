@@ -89,7 +89,7 @@ const startServer = async () => {
   try {
     await db.sequelize.authenticate();
     console.log("Database connected...");
-    // await db.sequelize.sync(); // Sincroniza los modelos con la base de datos
+    await db.sequelize.sync(); // Sincroniza los modelos con la base de datos
   } catch (error) {
     console.error("Unable to connect to the database:", error);
   }
