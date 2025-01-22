@@ -56,3 +56,12 @@ query GetUserById($getUserByIdId: ID!) {
 {
   "getUserByIdId": "1"
 }
+
+##############
+
+POST https://gestion-hoteles-backend-e4dcc6aac05c.herokuapp.com/graphql
+Content-Type: application/json
+
+{
+  "query": "query { __typename }"
+}

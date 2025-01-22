@@ -31,6 +31,10 @@ const startServer = async () => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
+
+    introspection: true, // Permite introspección en producción
+    playground: true,    // Habilita el playground interactivo
+    
     playground: {
         settings: {
           'editor.theme': 'dark',  // Puedes personalizar los ajustes aquí
