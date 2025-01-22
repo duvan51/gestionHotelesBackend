@@ -33,14 +33,11 @@ const startServer = async () => {
     resolvers,
 
     introspection: true, // Permite introspección en producción
-    playground: true,    // Habilita el playground interactivo
-
-   /* playground: {
-        settings: {
-          'editor.theme': 'dark',  // Puedes personalizar los ajustes aquí
-        },
-      },  // Habilita el playground de Apollo
-*/
+    playground: process.env.NODE_ENV !== 'production' ? true : {
+      settings: {
+        'editor.theme': 'dark', // Tema oscuro
+      },
+    },
     context: ({ req }) => {
       // const token = req.headers.authorization || '';
       // return {token}
